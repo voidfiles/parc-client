@@ -1,0 +1,65 @@
+<!-- Add your site or application content here -->
+<div class="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" ui-sref="index">Parc</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="js-navbar-collapse">
+        <form class="navbar-form navbar-left" role="search" ng-submit="search()">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for..." ng-model='queryView.query'>
+              </span>
+            </div>
+          </div>
+        </form>
+        <ul class="nav navbar-nav navbar-left">
+          <li class="dropdown" dropdown>
+            <a class="dropdown-toggle" dropdown-toggle role="button" aria-expanded="false">
+              Order: {{ queryView.order }} <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a ng-click='queryView.order = "Newest First"'>Newest First</a></li>
+              <li><a ng-click='queryView.order = "Oldest First"'>Oldest First</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-left">
+          <li class="dropdown" dropdown>
+            <a class="dropdown-toggle" dropdown-toggle role="button" aria-expanded="false">
+              State: {{ queryView.state }} <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a ng-click='queryView.state = "Unread"'>Unread</a></li>
+              <li><a ng-click='queryView.state = "Archived"'>Archived</a></li>
+              <li><a ng-click='queryView.state = "Deleted"'>Deleted</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" dropdown>
+            <a class="dropdown-toggle" dropdown-toggle role="button" aria-expanded="false">
+              Last Sync <span am-time-ago="config.syncState.lastSync"></span> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a ng-click='sync()'>Sync</a></li>
+              <li><a ng-click='sort(true)'>Oldest First</a></li>
+              <li><a ng-click='sort(false)'>Newest First</a></li>
+            </ul>
+          </li>
+        </ul>
+        <p ng-show='syncing' class="navbar-text">Syncing <i class="fa fa-spinner fa-pulse"></i></p>
+      </div>
+    </div>
+  </div>
+</div>

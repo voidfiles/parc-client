@@ -1,0 +1,8 @@
+<ul class='list-inline action-bar'>
+  <li>
+    <a class='fa fa-fw' ng-class="{'fa-bookmark-o': !article.archived, 'fa-bookmark': article.archived}"
+       ng-click='toggleArchiveArticle(article)' title='{{ (article.archived) ? "unarchive" : "archive" }}'></a>
+  </li>
+  <li><remove-article></remove-article></li>
+  <li><a class='fa fa-share fa-fw' title='Share'></a></li>
+</ul>

@@ -1,0 +1,20 @@
+<div class='container'>
+  <div class='row' ng-mouseenter="mouseEnter($index)" ng-mouseleave="mouseLeave()"
+       ng-repeat='article in articles track by article.id'>
+    <div class='col-xs-12'>
+      <div class='list-view-item'>
+        <h3><a ui-sref='article({articleId: article.id})'>{{article.title}}</a></h3>
+        <p ng-show='article._highlighting.html' ng-bind-html="article._highlighting.html"></p>
+        <p class='article-meta'>
+          <span am-time-ago="article.date_saved"></span> - {{article.origin.url}}
+        </p>
+        <p class='short-description' ng-bind='article.html | htmlToPlaintext'></p>
+        <div class='action-bar-container'>
+          <action-bar ng-if='$index == selectedIndex' article="article"></action-bar>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </div>
+  <a ng-click="myPagingFunction()">Load More</a>
+</div>
