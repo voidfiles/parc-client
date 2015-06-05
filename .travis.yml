@@ -1,18 +1,18 @@
 sudo: false
 language: node_js
 node_js:
-  - '0.12'
+- '0.12'
 before_script:
-  - npm install -g bower grunt-cli
-  - bower install
-  - gem install compass
-  - grunt build
-  - ls -altr
+- npm install -g bower grunt-cli
+- bower install
+- gem install compass
+- grunt build
+- ls -altr
 deploy:
   provider: s3
-  access_key_id: AKIAJMV62HMDRASYU5UQ
+  access_key_id: AKIAIO7M4ARWYBM65G4Q
   secret_access_key:
-    secure: iBAy/qxVAhVbOhzVsEXThNa/7jDevxU9MYxynORwC+uclm3jymKlY/7aIvXQK1Hinxc6DEsuB1BTx9FrF6JKvTKSARHbpY+3LXcJ8vtQQbOiqo1gZt1ipg1pivM6sPWRfjwL+PBzuU9mfRdz9KrJ3VjaAb2aYfANtgBQI2K6tHA3MiZfU+xKBCbR6qJ/Dee/6qL/z3WgVgrZ3BBjr7p3vLFxn68nTmwx/CMjMmQcfONsGBBbcMhVUidsrs8tg8SIO7eyOLgXs6Ymo9YRAnsLMEqy7oOSa3x4Od4qz9CrttVgPi2b/t2h5OtqqsKSn2je6JG3lGm/3fOd0138c4DA5JuHjfp4cEtiqf+5kJt/rSj3HCIqGuM7n+igI43PRbq7etwOm7G2CFsiGlbmO/Kvczo2WbkZTYtxWu2slT9RVkBuP1AccwvmmG/i9AkpVRQwC40XMntraDO2L5ECLBd6Whk8IHJ+7VvcY4QCX1+HLeBXtkGa1LBN0T6pE5bHR+Td5FGv2rN4uwU3ht64bRt2YOr21x+UBvSDB70EqJIlrFjOjcaKh3YG8rzeHdVYjd0q0XPBXMArIJ6FU+126dTOwSCtTkWfztLqi2lphlSBkxo0w4PbOTORdcW+nZn1rt7OXD+W0FvlCK6Bk0PwpncyJwG2GTX5W6zEFl+MCho1oFk=
+    secure: bJvc87EHh5Xey+1A4oc/52gZHPrimIJFk+xUEPQTQMFRwi7UB7RRbSRwRFeWUo+iXqloJdjYfSi4HDoMJNvHQF8wLVjUUGREjd1zBLm9/iYmrW+lu31rOze0ZJDG5IdAI/LgK9OlkSxqnzqULJ8DBPZEVXdQyMjAqjEAVbCpZRnQUDDMnTXfbO+kIzZTEEwzAWSTqea/WaCmCNl57afTLqooze/YFN+GSVepOxIuNd5RtqtDsx4PuiLRny7JAkTl9FQzuZYEfUUxZYcvva+NQmwsjSh2PvncGnDVhI30ngw98UzwLgiNocAuqghZzTd/c1XYUaq03UGsJF0jpQZj5cIQ+e5u34TX9jfhoaNh6Fxmgxas0dA2/z9JCe2ctI2jicYyloegUTBes2JJ/49ux7Wi6Buc7PZxQCF9xT9iZTVTEgjMRMutyLikhawlSW/C4jwasKZQ+AT9s74WwDTISISYiAR5CavtVvQOXcVDDaLrR6De1EC3V+fRHast/pn19MNdvdCdxsB++EUPTzDrX2EVkr7zZIuRw91zi1Xau01l/F3wCvC1pjO/tiaE7i7ghYsWWZ3WR+wV7HisjqfGT1fA6f5a0/Lr+q83EOPQzq3Qb6ESVleoMVxcvStcqF/KWdl1qZZ3AP0RDFQX7W/3OB0y/uDWUeH71vVJeYKyWHU=
   bucket: parc.brntgarlic.com
   local-dir: dist
   acl: public_read
