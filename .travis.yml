@@ -1,9 +1,16 @@
 sudo: false
 language: node_js
 node_js:
-  - 'iojs'
   - '0.12'
-  - '0.10'
 before_script:
-  - 'npm install -g bower grunt-cli'
-  - 'bower install'
+  - npm install -g bower grunt-cli
+  - bower install
+  - grunt build
+deploy:
+  provider: s3
+  access_key_id: AKIAJMV62HMDRASYU5UQ
+  secret_access_key:
+    secure: iBAy/qxVAhVbOhzVsEXThNa/7jDevxU9MYxynORwC+uclm3jymKlY/7aIvXQK1Hinxc6DEsuB1BTx9FrF6JKvTKSARHbpY+3LXcJ8vtQQbOiqo1gZt1ipg1pivM6sPWRfjwL+PBzuU9mfRdz9KrJ3VjaAb2aYfANtgBQI2K6tHA3MiZfU+xKBCbR6qJ/Dee/6qL/z3WgVgrZ3BBjr7p3vLFxn68nTmwx/CMjMmQcfONsGBBbcMhVUidsrs8tg8SIO7eyOLgXs6Ymo9YRAnsLMEqy7oOSa3x4Od4qz9CrttVgPi2b/t2h5OtqqsKSn2je6JG3lGm/3fOd0138c4DA5JuHjfp4cEtiqf+5kJt/rSj3HCIqGuM7n+igI43PRbq7etwOm7G2CFsiGlbmO/Kvczo2WbkZTYtxWu2slT9RVkBuP1AccwvmmG/i9AkpVRQwC40XMntraDO2L5ECLBd6Whk8IHJ+7VvcY4QCX1+HLeBXtkGa1LBN0T6pE5bHR+Td5FGv2rN4uwU3ht64bRt2YOr21x+UBvSDB70EqJIlrFjOjcaKh3YG8rzeHdVYjd0q0XPBXMArIJ6FU+126dTOwSCtTkWfztLqi2lphlSBkxo0w4PbOTORdcW+nZn1rt7OXD+W0FvlCK6Bk0PwpncyJwG2GTX5W6zEFl+MCho1oFk=
+  bucket: parc.brntgarlic.com
+  local-dir: dist
+  acl: public_read
