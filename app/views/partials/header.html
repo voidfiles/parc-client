@@ -12,18 +12,15 @@
         </button>
 
         <a class="navbar-brand" ui-sref="index">Parc</a>
+        <form class="navbar-form pull-left" role="search" ng-submit="search()" ng-if="showSortInfo">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for..." ng-model='queryView.query'>
+            </div>
+        </form>
       </div>
 
       <div class="collapse navbar-collapse" id="js-navbar-collapse">
-        <form class="navbar-form navbar-left" role="search" ng-submit="search()">
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for..." ng-model='queryView.query'>
-              </span>
-            </div>
-          </div>
-        </form>
-        <ul class="nav navbar-nav navbar-left">
+        <ul class="nav navbar-nav navbar-left" ng-if="showSortInfo">
           <li class="dropdown" dropdown>
             <a class="dropdown-toggle" dropdown-toggle role="button" aria-expanded="false">
               Order: {{ queryView.order }} <span class="caret"></span>
@@ -34,7 +31,7 @@
             </ul>
           </li>
         </ul>
-        <ul class="nav navbar-nav navbar-left">
+        <ul class="nav navbar-nav navbar-left" ng-if="showSortInfo">
           <li class="dropdown" dropdown>
             <a class="dropdown-toggle" dropdown-toggle role="button" aria-expanded="false">
               State: {{ queryView.state }} <span class="caret"></span>

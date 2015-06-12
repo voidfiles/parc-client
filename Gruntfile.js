@@ -18,7 +18,8 @@ module.exports = function (grunt) {
 
 var rewriteMiddleware = rewriteModule.getMiddleware([
     // Internal rewrite
-    {from: '^/(login)$', to: '/index.html'}
+    {from: '^/(login)$', to: '/index.html'},
+    {from: '^/article/.*/$', to: '/index.html'}
 ], {verbose: true});
 
 

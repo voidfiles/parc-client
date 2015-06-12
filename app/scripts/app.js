@@ -26,17 +26,32 @@ ParcAngularApp.run(function ($rootScope, $location, $state, usSpinnerService, Pa
       $.extend(true, $rootScope.config, ParcConfig.getConfig());
     });
 
+    $rootScope.showSortInfo = true;
+
     $rootScope.$on("$stateChangeStart", function (event, toState) {
         usSpinnerService.spin('spinner-1');
         var currentConfig = ParcConfig.getConfig();
+        console.log("Redirecting", currentConfig);
+        $rootScope.showSortInfo = !!toState.data.showSortInfo;
         // Require authentication for all pages unless data.requiresAuth = false
         if (toState.data.requiresAuth === true && !currentConfig.connectionInfo.server) {
+            console.log("Redirecting to auth");
             $rootScope.nextState = toState.name;
             event.preventDefault();
             usSpinnerService.stop('spinner-1');
             $state.go('login');
         }
+        console.log("Done redirecting");
+    });
 
+    $rootScope.$on('$stateNotFound', function(event, unfoundState){
+        console.log(unfoundState.to); // "lazy.state"
+        console.log(unfoundState.toParams); // {a:1, b:2}
+        console.log(unfoundState.options); // {inherit:false} + default options
+    });
+
+    $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
+        console.log(error);
     });
 
     $rootScope.$on("$stateChangeSuccess", function () {
@@ -83,6 +98,7 @@ ParcAngularApp.config(function ($stateProvider, $urlRouterProvider, $locationPro
     data: {
       requiresAuth: true,
       requiresDb: true,
+      showSortInfo: false,
     },
     views: {
       header: {
@@ -98,6 +114,9 @@ ParcAngularApp.config(function ($stateProvider, $urlRouterProvider, $locationPro
 
   $stateProvider.state('index', buildState({
     url: "/",
+    data: {
+      showSortInfo: true,
+    },
     views: {
       "main": {
         templateUrl: "views/index.html",
@@ -126,9 +145,10 @@ ParcAngularApp.config(function ($stateProvider, $urlRouterProvider, $locationPro
         templateUrl: "views/article.html",
         controller: 'ArticleCtrl',
         resolve: {
-          article: function ($stateParams, ArticlesDB) {
+          article: ['$stateParams', 'ArticlesDB', function ($stateParams, ArticlesDB) {
+            console.log("Getting article", $stateParams.articleId);
             return ArticlesDB.getArticle($stateParams.articleId);
-          }
+          }]
         }
       }
     }

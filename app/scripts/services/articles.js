@@ -57,7 +57,9 @@ angular.module('parcAngularApp').factory('ArticlesDB', function ($rootScope, usS
       });
     },
     getArticle: function (articleId) {
+      console.log("Inside getArtile", articleId);
       return db.promise.then(function () {
+        console.log("Got database returning article", articleId);
         return articles[articleId];
       });
     },
